@@ -1,16 +1,17 @@
 # Autonomous Agents & Multi-Agent Systems
-### IST, Spring Semester 2022
 
-### Quickstart
+### Lab files for the Autonomous Agents & Multi-Agent Systems course at IST.
+
+### Quickstart:
 
 1. Clone the repo
 
 
-    $ git clone https://github.com/gaips/aasma-spring-22
+    $ git clone https://github.com/gaips/aasma-labs
     
-    $ cd aasma-spring-22
+    $ cd aasma-labs
 
-2. Create virtual environment
+2. Create virtual environment (tested with python 3.8.10)
 
 
     $ python3 -m venv venv
@@ -25,4 +26,11 @@
 4. Test installation
 
 
-    $ python demo_single_agent.py
+    $ python test_install.py
+
+### Code contributors:
+- João Ribeiro (@jmribeiro)
+- Guilherme Varela (@gsavarela)
+- Miguel Faria (@miguel-faria)
+- Pedro P. Santos (@PPSantos)
+- Fábio Vital (@gh0stwin)
