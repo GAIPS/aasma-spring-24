@@ -7,8 +7,8 @@ from aasma import Agent
 from aasma.utils import compare_results
 from aasma.simplified_predator_prey import SimplifiedPredatorPrey
 
-from exercise_1_single_random_agent import RandomAgent
-from exercise_2_single_random_vs_greedy import GreedyAgent
+from lab1_solutions.exercise_1_single_random_agent import RandomAgent
+from lab1_solutions.exercise_2_single_random_vs_greedy import GreedyAgent
 
 
 def run_multi_agent(environment: Env, agents: Sequence[Agent], n_episodes: int) -> np.ndarray:

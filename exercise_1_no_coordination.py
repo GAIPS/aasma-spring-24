@@ -1,37 +1,13 @@
 import argparse
+import random
 import numpy as np
-from gym import Env
-from typing import Sequence
 
-from aasma import Agent
 from aasma.utils import compare_results
 from aasma.simplified_predator_prey import SimplifiedPredatorPrey
 
-from exercise_1_single_random_agent import RandomAgent
-from exercise_2_single_random_vs_greedy import GreedyAgent
-
-
-def run_multi_agent(environment: Env, agents: Sequence[Agent], n_episodes: int) -> np.ndarray:
-
-    results = np.zeros(n_episodes)
-
-    for episode in range(n_episodes):
-
-        steps = 0
-        terminals = [False for _ in range(len(agents))]
-        observations = environment.reset()
-
-        while not all(terminals):
-            steps += 1
-            # TODO - Main Loop (4-6 lines of code)
-            raise NotImplementedError()
-
-        results[episode] = steps
-
-        environment.close()
-
-    return results
-
+from lab1_solutions.exercise_3_multi_agent import run_multi_agent
+from lab1_solutions.exercise_1_single_random_agent import RandomAgent
+from lab1_solutions.exercise_2_single_random_vs_greedy import GreedyAgent
 
 if __name__ == '__main__':
 
@@ -41,7 +17,17 @@ if __name__ == '__main__':
     opt = parser.parse_args()
 
     # 1 - Setup the environment
-    environment = SimplifiedPredatorPrey(grid_shape=(7, 7), n_agents=4, n_preys=1, max_steps=100)
+    # TODO: Instantiate the SimplifiedPredatorPrey environment with the
+    # desired number of predators required to capture the prey. The
+    # environment must be instantiated with the following arguments:
+    # grid_shape=(15, 15), n_agents=4, n_preys=1, max_steps=100, and
+    # the number of required_captors.
+    raise ValueError("Not implemented.")
+
+    # Set seeds.
+    random.seed(3)
+    np.random.seed(3)
+    environment.seed(3)
 
     # 2 - Setup the teams
     teams = {
@@ -60,17 +46,12 @@ if __name__ == '__main__':
             GreedyAgent(agent_id=3, n_agents=4)
         ],
 
-        "1 Greedy + 3 Random": [
-            GreedyAgent(agent_id=0, n_agents=4),
-            RandomAgent(environment.action_space[1].n),
-            RandomAgent(environment.action_space[2].n),
-            RandomAgent(environment.action_space[3].n)
-        ]
     }
 
     # 3 - Evaluate teams
     results = {}
     for team, agents in teams.items():
+        print(f'Running {team}.')
         result = run_multi_agent(environment, agents, opt.episodes)
         results[team] = result
 
@@ -78,6 +59,5 @@ if __name__ == '__main__':
     compare_results(
         results,
         title="Teams Comparison on 'Predator Prey' Environment",
-        colors=["orange", "green", "blue"]
+        colors=["orange", "green"]
     )
-
