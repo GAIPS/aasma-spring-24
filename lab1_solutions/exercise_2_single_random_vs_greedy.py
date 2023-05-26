@@ -94,6 +94,10 @@ class GreedyAgent(Agent):
             return UP
         else:
             return STAY
+        
+    def next(self, observation, action, next_observation, reward, terminal, info):
+        # Not a learning agent
+        pass
 
 if __name__ == '__main__':
 

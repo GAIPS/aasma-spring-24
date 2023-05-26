@@ -42,6 +42,9 @@ class RandomAgent(Agent):
     def action(self) -> int:
         return np.random.randint(self.n_actions)
 
+    def next(self, observation, action, next_observation, reward, terminal, info):
+        # Not a learning agent
+        pass
 
 if __name__ == '__main__':
 

@@ -151,3 +151,33 @@ def compare_results(results, confidence=0.95, title="Agents Comparison", metric=
 
 
 
+def compare_results_learning(results, confidence=0.95, title="Agents Comparison", metric="Steps Per Episode", colors=None):
+
+    x = None
+
+    for agent, agent_results in results.items():
+
+        n_evaluations, n_eval_episodes = agent_results.shape
+
+        x = tuple(range(n_evaluations))
+
+        y = []
+        yerr = []
+        for evaluation in range(n_evaluations):
+            result = agent_results[evaluation]
+            mean = result.mean()
+            std_dev = result.std()
+            y.append(mean)
+            yerr.append(standard_error(std_dev, n_eval_episodes, confidence))
+
+        plt.errorbar(x, y, yerr=yerr, label=agent, ls="dotted", capsize=10, marker="o", color=colors[list(results.keys()).index(agent)] if colors is not None else None)
+
+    x = np.array(x)
+    plt.title(title)
+    plt.legend()
+    plt.xlabel("Evaluation Checkpoint")
+    plt.ylabel(metric)
+    plt.xticks(x, [int(x[i]) + 1 for i in range(x.size)])
+    plt.grid()
+    plt.show()
+    plt.close()

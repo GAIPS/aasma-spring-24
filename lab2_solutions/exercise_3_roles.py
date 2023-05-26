@@ -11,7 +11,7 @@ from lab1_solutions.exercise_1_single_random_agent import RandomAgent
 from lab1_solutions.exercise_2_single_random_vs_greedy import GreedyAgent
 from lab1_solutions.exercise_3_multi_agent import run_multi_agent
 
-from exercise_2_social_conventions import ConventionAgent
+from lab2_solutions.exercise_2_social_conventions import ConventionAgent
 
 ACTIONS = 4
 GO_NORTH, GO_SOUTH, GO_WEST, GO_EAST = range(ACTIONS)
